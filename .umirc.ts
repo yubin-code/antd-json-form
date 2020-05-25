@@ -9,7 +9,7 @@ export default defineConfig({
     includes: ['doc'],
   },
   outputPath: "docs",
-  // publicPath: "./",
+  publicPath: "./",
   history: { type: "hash" },
   extraBabelPlugins: [
     [
