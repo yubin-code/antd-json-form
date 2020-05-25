@@ -1,0 +1,60 @@
+{
+  "name": "antd-json-form",
+  "version": "1.0.0",
+  "homepage": "https://github.com/184622329",
+  "license": "ISC",
+  "description": "JSON-Form 在antd 基础上进行了封装方便快速生成表单",
+  "scripts": {
+    "start": "dumi dev",
+    "docs:build": "dumi build",
+    "build": "father-build",
+    "lint": "npm run lint:js && npm run lint:style",
+    "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
+    "lint:prettier": "prettier -c --write \"**/*\"",
+    "test": "umi-test",
+    "test:coverage": "umi-test --coverage"
+  },
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "/lib",
+    "/dist"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
+  "dependencies": {
+    "@umijs/preset-react": "1.x",
+    "@umijs/test": "^3.0.5",
+    "antd": "^4.2.4",
+    "antd-linkage": "^1.1.0",
+    "dumi": "^1.0.6",
+    "father-build": "^1.17.2",
+    "lint-staged": "^10.0.7",
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
+    "react-github-btn": "^1.2.0",
+    "yorkie": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.35",
+    "@umijs/fabric": "2.0.8",
+    "eslint": "6.8.0",
+    "husky": "^4.2.5",
+    "pretty-quick": "^2.0.1",
+    "stylelint": "^13.4.0",
+    "typescript": "3.5.3"
+  },
+  "authors": {
+    "name": "yubin",
+    "email": "18462232@qq.com"
+  }
+}
