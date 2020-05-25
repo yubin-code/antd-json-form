@@ -1,32 +1,45 @@
-import { FormProps, FormItemProps, FormInstance } from 'antd/es/form';
+import { FormProps, FormInstance } from 'antd/es/form';
+import { FieldProps } from 'rc-field-form/lib/Field'; 
+import { FormItemLabelProps } from 'antd/es/form/FormItemLabel';
+import { FormItemInputProps } from 'antd/es/form/FormItemInput'
 
+declare const ValidateStatuses: ["success", "warning", "error", "validating", ""];
+export declare type ValidateStatus = typeof ValidateStatuses[number];
+declare type RcFieldProps = Omit<FieldProps, 'children'>;
+declare type RenderChildren = (form: FormInstance) => React.ReactNode;
+declare type ChildrenType = RenderChildren | React.ReactNode;
 export interface Store {
   [name: string]: any;
 }
 export declare type FormLayout = 'horizontal' | 'inline' | 'vertical';
-export interface fieldSource extends FormItemProps{
-  bindfield?: any,
-  name: string;
+export interface fieldSource extends FormItemLabelProps, FormItemInputProps, RcFieldProps{
   [key:string]: any;
-  props: any;
+  prefixCls?: string;
+  noStyle?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+  children?: ChildrenType;
+  id?: string;
+  hasFeedback?: boolean;
+  validateStatus?: ValidateStatus;
+  required?: boolean;
+  /** Auto passed by List render props. User should not use this. */
+  fieldKey?: number;
+  bindfield?: any,
+  name?: string;
+  label?: string; 
+  props?: any;
   // 是否编辑状态不可编辑
-  isEditDisabled: boolean;
+  isEditDisabled?: boolean;
   // 是否编辑状态隐藏字段
-  isEditHide: boolean;
+  isEditHide?: boolean;
   /**
    * 网络请求的字段
    */
-  request: <T>(item: any) => Promise<T>;
-  /**
-   * 判断网络是否请求完毕 true 为完毕
-   */
-  done: boolean;
-  /**
-   * 判断字段绑定关系
-   */
-  isbind: boolean;
+  request?: <T>(item: any) => Promise<T>;
   // form 支持的表单类型
-  type: 'button'|'search'|'rangePicker'|'password'|'textarea'|'autoComplete'|'checkbox'|'cascader'|'datePicker'|'number'|'text'|'mentions'|'rate'|'radio'|'switch'|'slider'|'select'|'treeSelect'|'transfer'|'timePicker'|'upload'
+  // type?: 'button'|'search'|'rangePicker'|'password'|'textarea'|'autoComplete'|'checkbox'|'cascader'|'datePicker'|'number'|'text'|'mentions'|'rate'|'radio'|'switch'|'slider'|'select'|'treeSelect'|'transfer'|'timePicker'|'upload'|'editor'
+  type?: string;
 }
 
 /**
@@ -39,10 +52,8 @@ export interface JsonFormProps<T> extends FormProps {
   loading?: boolean;
   // 表单字段数据源
   fieldsSource?: fieldSource[];
-  // 重构表单内部组件
-  component: any;
   onReset?: () => void;
-  onFinish:(values: Store|string) => void;
+  onFinish?:(values: Store|string) => void;
 }
 
 /**

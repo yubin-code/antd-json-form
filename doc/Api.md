@@ -70,6 +70,8 @@ nav:
 | `"autoComplete"` | 自动完成 |
 | `"cascader"` | 级联选择 |
 | `"upload"` | 上传 |
+| `"Editor"` | 富文本编辑器 |
+
 
 # 示例
 <code src="./example/form_demo.tsx" />

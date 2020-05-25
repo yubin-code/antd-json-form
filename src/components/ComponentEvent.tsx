@@ -41,9 +41,9 @@ export default (item: fieldSource, props: any, Component: React.ReactElement) =>
   }
 
   let prop = {}
-
+  
   // 数据字段判断
-  switch(item.type.toLowerCase()){
+  switch(item.type && item.type.toLowerCase()){
     case "treeselect":
       prop = { treeData: data }
       break

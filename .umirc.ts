@@ -9,7 +9,7 @@ export default defineConfig({
     includes: ['doc'],
   },
   outputPath: "docs",
-  publicPath: "./",
+  // publicPath: "./",
   history: { type: "hash" },
   extraBabelPlugins: [
     [
@@ -22,14 +22,5 @@ export default defineConfig({
     ],
   ],
   hash: true,
-  proxy: {
-    '/Enter/': {
-      target: 'https://hlab.kexueduizhang.cn/',
-      changeOrigin: true,
-      pathRewrite: {
-        '^/': '',
-      },
-    },
-  },
 });
 

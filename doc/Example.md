@@ -40,6 +40,11 @@ nav:
 
 <code src="./example/form_asyn.tsx" />
 
+## 富文本编辑器
+
+> 编辑器使用的是 `braft-editor` 插件具体说明请查看[文档](https://braft.margox.cn/)
+
+<code src="./example/form_editor.tsx" />
 
 ## 图片上传
 > 对上传进行来简化包括上传大小限制 `size` 上传数量限制 `max` 上传类型限制 `fileType`

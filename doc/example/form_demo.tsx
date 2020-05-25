@@ -178,15 +178,10 @@ const fieldsSource = [
       render: (item: { title: string; }) => item.title
     }
   },
-  { type: 'Button', props: [
-      { type: 'primary', htmlType: 'submit', children: '提交', style: {marginRight: 10 } },
-      { type: 'primary', htmlType: 'reset', children: '重置' }
-    ]
-  },
   { name: 'upload', type: 'upload', label: '上传', 
     props: {
       fileStyle: "avatar",
-      fileText: "上传次",
+      fileText: "上传文件",
       action: "/Enter/public/upload",
       fileType: ['image/jpeg', 'image/png'],
       error: "上传失败",
@@ -200,6 +195,14 @@ const fieldsSource = [
       defaultFileList: [],
     }
   },
+  { name: 'editor', type: 'editor', label: '内容', props: {
+    excludeControls: ['code'],
+  }},
+  { type: 'Button', props: [
+      { type: 'primary', htmlType: 'submit', children: '提交', style: {marginRight: 10 } },
+      { type: 'primary', htmlType: 'reset', children: '重置' }
+    ]
+  },
 ]
 
 
@@ -208,5 +211,5 @@ const onFinish = (values:any) => {
 }
 
 export default () => {
-  return <Form onFinish={onFinish}  initialValues={{user: 'admin', transfer: []}} layout='horizontal' fieldsSource={fieldsSource} />
+  return <Form onFinish={onFinish}  initialValues={{user: 'admin', transfer: [], editor: "<div>123</div>"}} layout='horizontal' fieldsSource={fieldsSource} />
 }

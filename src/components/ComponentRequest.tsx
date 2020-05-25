@@ -4,17 +4,18 @@ import _ from 'lodash';
 import { fieldSource } from '../FormType'
 
 const getData = (item: fieldSource, getProps: any,) => {
-  if(_.isEmpty(item.type)){
+  const type = item.type && item.type.toLowerCase() || ''
+  if(_.isEmpty(type)){
     return []
   }
 
   // 树形结构返回这个数据
-  if(item.type.toLowerCase() === "treeselect"){
+  if(type === "treeselect"){
     return getProps.treeData || []
   }
   
   // 穿梭框 返回这个数据
-  if(item.type.toLowerCase() === "transfer"){
+  if(type === "transfer"){
     return getProps.dataSource || []
   }
 
@@ -39,6 +40,9 @@ export default (isLoading: boolean, item: fieldSource, getProps: any, Component:
     if(!request && _.isEmpty(data) && _.isFunction(item.request)){
       setRequest(() => true)
       const HandleComponentRequest = async () => {
+        if(!item.request){
+          return false
+        }
         // 判断是否有异步函数
         const response = await item.request(item)
         /**
@@ -65,8 +69,9 @@ export default (isLoading: boolean, item: fieldSource, getProps: any, Component:
   let prop = {}
 
 
+  const type = item.type && item.type.toLowerCase() || ''
   // 数据字段判断
-  switch(item.type.toLowerCase()){
+  switch(type){
     case "treeselect":
       prop = { treeData: data }
       break

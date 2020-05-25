@@ -24,6 +24,7 @@ import TimePicker from './components/TimePicker'
 import Upload from './components/Upload'
 import Input from './components/Input'
 import Button from './components/Button'
+import Editor from './components/Editor'
 
 
 import { GetSystemParam } from './util';
@@ -59,6 +60,7 @@ const FormType:{
   transfer: Transfer,
   timepicker: TimePicker,
   upload: Upload,
+  editor: Editor,
 }
 
 
@@ -119,7 +121,6 @@ const InitComponent = (item: fieldSource, prop: any, data: FormItemInit) => {
       }
     }
   }
-
   return props
 }
 
@@ -238,7 +239,6 @@ const FormItemLayout = (item: fieldSource, node: React.ReactNode, key: number): 
  */
 const FormItem = (list: fieldSource[], data: FormItemShare) => {
   return list.map((item: fieldSource, key: number) => {
-
     /**
      * 判断编辑状态是否设置隐藏
      */
@@ -258,6 +258,8 @@ const FormItem = (list: fieldSource[], data: FormItemShare) => {
  */
 const JsonForm = <T, U = {}>(param: JsonFormProps<T>) => {
   const [form] = Form.useForm();
+  // 保存编辑器字段方面提交的时候直接修改成html格式数据
+  const editorField:string[] = []
   const {
     wrapperCol={ span: 4 },
     labelCol={ span: 14 },
@@ -275,8 +277,14 @@ const JsonForm = <T, U = {}>(param: JsonFormProps<T>) => {
     if(children) return
     // 对组件对值初始化
     fieldsSource.map((item: fieldSource) => {
+      const type = item.type && item.type.toLowerCase()
       const newItem = item
-      
+
+      // 保存所有编辑器字段
+      if(type === 'editor'){
+        editorField.push(item.name || '')
+      }
+
       if(_.isArray(newItem.props)){
         newItem.props = newItem.props.map((value) => InitComponent(item, value, { form, onReset }))
         return newItem
@@ -295,11 +303,27 @@ const JsonForm = <T, U = {}>(param: JsonFormProps<T>) => {
   </Form>
   }
 
+  const handleFinish = (values: any) => {
+    const newValues = values
+    
+    // 把编辑器对内容转为html
+    editorField.forEach(v => {
+      if(!_.isUndefined(newValues[v])){
+        newValues[v] = newValues[v].toHTML()
+      }
+    })
+
+    if(_.isFunction(onFinish)){
+      onFinish(newValues)
+    }
+  }
+
   // form Props
   const props: FormProps = {
     form,
     ...ItemLayout(layout, wrapperCol, labelCol),
-    ...param
+    ...param,
+    onFinish: handleFinish
   }
   
   return <Linkage>
