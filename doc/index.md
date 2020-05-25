@@ -41,10 +41,10 @@ export default () => (
       }}
     >
       <GitHubButton
-        href="https://github.com/184622329/antd-json-form"
+        href="https://github.com/yubin-code/antd-json-form"
         data-size="large"
         data-show-count
-        aria-label="Star 184622329/antd-json-form on GitHub"
+        aria-label="Star yubin-code/antd-json-form on GitHub"
       >
         Star
       </GitHubButton>
@@ -54,11 +54,11 @@ export default () => (
         }}
       />
       <GitHubButton
-        href="https://github.com/184622329/antd-json-form/issues"
+        href="https://github.com/yubin-code/antd-json-form/issues"
         data-color-scheme="no-preference: light; light: light; dark: light;"
         data-size="large"
         data-show-count="true"
-        aria-label="Issue 184622329/antd-json-form on GitHub"
+        aria-label="Issue yubin-code/antd-json-form on GitHub"
       >
         Issue
       </GitHubButton>

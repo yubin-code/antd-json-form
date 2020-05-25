@@ -23,7 +23,7 @@ nav:
 
 ## 提示
 > 如果觉得这个 Form-Json 太大可以单独安装这个组件  
-> 我已经把他抽象出来了 [文档地址](https://184622329.github.io/antd-linkage/#/)
+> 我已经把他抽象出来了 [文档地址](https://yubin-code.github.io/antd-linkage/#/)
 
 ```bash
 npm i antd-linkage --save

@@ -1,7 +1,7 @@
 {
   "name": "antd-json-form",
-  "version": "1.0.0",
-  "homepage": "https://github.com/184622329",
+  "version": "1.0.1",
+  "homepage": "https://github.com/yubin-code",
   "license": "ISC",
   "description": "JSON-Form 在antd 基础上进行了封装方便快速生成表单",
   "scripts": {

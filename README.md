@@ -1,4 +1,4 @@
-[查看文档](https://184622329.github.io/antd-json-form/)
+[查看文档](https://yubin-code.github.io/antd-json-form/)
 ## API
 
 > JSON-Form 在antd 基础上进行了封装，尽可能的保留antd Api，也新增了新的api方便快速生成表单
